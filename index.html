@@ -1,0 +1,1195 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GameVerse - Gaming Community</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+        body {
+            background-color: #0b0f19;
+            color: #ffffff;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .navbar {
+            background-color: #111827;
+        }
+
+        .navbar-brand {
+            font-size: 28px;
+            font-weight: bold;
+            color: #7c3aed !important;
+        }
+
+        .nav-link {
+            color: #ffffff !important;
+            margin-left: 15px;
+        }
+
+        .nav-link:hover {
+            color: #a78bfa !important;
+        }
+
+        .hero {
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            background:
+                linear-gradient(rgba(11, 15, 25, 0.75), rgba(11, 15, 25, 0.9)),
+                url("https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1600&q=80");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            font-weight: 800;
+        }
+
+        .hero h1 span {
+            color: #8b5cf6;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #d1d5db;
+            max-width: 650px;
+        }
+
+        .btn-game {
+            background-color: #7c3aed;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 8px;
+            border: none;
+            font-weight: bold;
+        }
+
+        .btn-game:hover {
+            background-color: #6d28d9;
+            color: white;
+        }
+
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            color: #fdfeff;
+            margin-bottom: 40px;
+        }
+
+        .game-card,
+        .tournament-card,
+        .news-card,
+        .player-card {
+            background-color: #151b2b;
+            border: 1px solid #293247;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: 0.3s;
+            color: white;
+        }
+
+        .game-card:hover,
+        .tournament-card:hover,
+        .news-card:hover,
+        .player-card:hover {
+            transform: translateY(-7px);
+            border-color: #7c3aed;
+        }
+
+        .game-card img,
+        .news-card img {
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .game-badge {
+            background-color: #7c3aed;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        .rating {
+            color: #facc15;
+        }
+
+        .tournament-icon {
+            font-size: 40px;
+            color: #8b5cf6;
+        }
+
+        .leaderboard {
+            background-color: #151b2b;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .table {
+            margin-bottom: 0;
+        }
+
+        .table th {
+            background-color: #1f2937;
+            color: #ffffff;
+        }
+
+        .table td {
+            background-color: #151b2b;
+            color: #d1d5db;
+            vertical-align: middle;
+        }
+
+        .rank {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .player-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #7c3aed;
+        }
+
+        .contact-section {
+            background-color: #111827;
+        }
+
+        .form-control {
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            color: white;
+        }
+
+        .form-control:focus {
+            background-color: #1f2937;
+            color: white;
+            border-color: #7c3aed;
+            box-shadow: none;
+        }
+
+        .form-control::placeholder {
+            color: #9ca3af;
+        }
+
+        footer {
+            background-color: #080b12;
+            color: #9ca3af;
+        }
+
+        .social-icon {
+            font-size: 22px;
+            margin-right: 15px;
+            color: #9ca3af;
+        }
+
+        .social-icon:hover {
+            color: #8b5cf6;
+        }
+
+        @media (max-width: 768px) {
+
+            .hero {
+                min-height: 500px;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-controller"></i> GameVerse
+            </a>
+
+            <button class="navbar-toggler bg-light" type="button"
+                data-bs-toggle="collapse" data-bs-target="#gameNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="gameNavbar">
+
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#games">Games</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#tournaments">Tournaments</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#leaderboard">Leaderboard</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#players">Players</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- ================= HERO SECTION ================= -->
+
+    <section class="hero" id="home">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-lg-8">
+
+                    <span class="badge bg-primary mb-3">
+                        WELCOME TO THE GAMING COMMUNITY
+                    </span>
+
+                    <h1>
+                        Play. Compete.
+                        <span>Connect.</span>
+                    </h1>
+
+                    <p class="mt-3">
+                        Welcome to GameVerse, your ultimate gaming community.
+                        Discover exciting games, join tournaments, compete
+                        with players and climb the leaderboard.
+                    </p>
+
+                    <div class="mt-4">
+
+                        <a href="#games" class="btn btn-game me-2">
+                            Explore Games
+                        </a>
+
+                        <a href="#tournaments"
+                            class="btn btn-outline-light">
+                            View Tournaments
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= GAMES SECTION ================= -->
+
+    <section class="py-5" id="games">
+
+        <div class="container">
+
+            <div class="text-center">
+
+                <h2 class="section-title">
+                    Popular Games
+                </h2>
+
+                <p class="section-subtitle">
+                    Discover games loved by our gaming community.
+                </p>
+
+            </div>
+
+            <div class="row g-4">
+
+                <!-- Game 1 -->
+
+                <div class="col-md-6 col-lg-3">
+
+                    <div class="card game-card h-100">
+
+                        <img src="https://images.unsplash.com/photo-1542751110-97427bbecf20?auto=format&fit=crop&w=800&q=80"
+                            class="card-img-top"
+                            alt="Gaming">
+
+                        <div class="card-body">
+
+                            <span class="game-badge">
+                                FPS
+                            </span>
+
+                            <h5 class="mt-3">
+                                Valorant
+                            </h5>
+
+                            <p class="text-secondary">
+                                Tactical competitive shooter
+                                with unique agents.
+                            </p>
+
+                            <div class="rating">
+                                ★★★★★
+                                <span class="text-secondary">
+                                    4.8
+                                </span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Game 2 -->
+
+                <div class="col-md-6 col-lg-3">
+
+                    <div class="card game-card h-100">
+
+                        <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=800&q=80"
+                            class="card-img-top"
+                            alt="Gaming">
+
+                        <div class="card-body">
+
+                            <span class="game-badge">
+                                Battle Royale
+                            </span>
+
+                            <h5 class="mt-3">
+                                PUBG
+                            </h5>
+
+                            <p class="text-secondary">
+                                Survive and become the
+                                last player standing.
+                            </p>
+
+                            <div class="rating">
+                                ★★★★★
+                                <span class="text-secondary">
+                                    4.7
+                                </span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Game 3 -->
+
+                <div class="col-md-6 col-lg-3">
+
+                    <div class="card game-card h-100">
+
+                        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80"
+                            class="card-img-top"
+                            alt="Gaming">
+
+                        <div class="card-body">
+
+                            <span class="game-badge">
+                                Adventure
+                            </span>
+
+                            <h5 class="mt-3">
+                                Minecraft
+                            </h5>
+
+                            <p class="text-secondary">
+                                Build, explore and create
+                                your own world.
+                            </p>
+
+                            <div class="rating">
+                                ★★★★★
+                                <span class="text-secondary">
+                                    4.9
+                                </span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Game 4 -->
+
+                <div class="col-md-6 col-lg-3">
+
+                    <div class="card game-card h-100">
+
+                        <img src="https://images.unsplash.com/photo-1603481546238-487240415921?auto=format&fit=crop&w=800&q=80"
+                            class="card-img-top"
+                            alt="Gaming">
+
+                        <div class="card-body">
+
+                            <span class="game-badge">
+                                Sports
+                            </span>
+
+                            <h5 class="mt-3">
+                                FIFA
+                            </h5>
+
+                            <p class="text-secondary">
+                                Experience the excitement
+                                of competitive football.
+                            </p>
+
+                            <div class="rating">
+                                ★★★★★
+                                <span class="text-secondary">
+                                    4.6
+                                </span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= TOURNAMENT SECTION ================= -->
+
+    <section class="py-5 bg-dark" id="tournaments">
+
+        <div class="container">
+
+            <div class="text-center">
+
+                <h2 class="section-title">
+                    Upcoming Tournaments
+                </h2>
+
+                <p class="section-subtitle">
+                    Compete with the best players and prove your skills.
+                </p>
+
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-md-4">
+
+                    <div class="tournament-card p-4 h-100">
+
+                        <div class="tournament-icon">
+                            <i class="bi bi-trophy"></i>
+                        </div>
+
+                        <h4 class="mt-3">
+                            Valorant Championship
+                        </h4>
+
+                        <p class="text-secondary">
+                            Battle against top tactical
+                            shooter players.
+                        </p>
+
+                        <hr>
+
+                        <p>
+                            <i class="bi bi-calendar"></i>
+                            October 15, 2026
+                        </p>
+
+                        <p>
+                            <i class="bi bi-people"></i>
+                            32 Teams
+                        </p>
+
+                        <p>
+                            <i class="bi bi-award"></i>
+                            Prize Pool: ₹50,000
+                        </p>
+
+                        <button class="btn btn-game w-100">
+                            Register Now
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="tournament-card p-4 h-100">
+
+                        <div class="tournament-icon">
+                            <i class="bi bi-controller"></i>
+                        </div>
+
+                        <h4 class="mt-3">
+                            Battle Royale Cup
+                        </h4>
+
+                        <p class="text-secondary">
+                            Survive the battlefield and
+                            claim victory.
+                        </p>
+
+                        <hr>
+
+                        <p>
+                            <i class="bi bi-calendar"></i>
+                            October 22, 2026
+                        </p>
+
+                        <p>
+                            <i class="bi bi-people"></i>
+                            100 Players
+                        </p>
+
+                        <p>
+                            <i class="bi bi-award"></i>
+                            Prize Pool: ₹75,000
+                        </p>
+
+                        <button class="btn btn-game w-100">
+                            Register Now
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="tournament-card p-4 h-100">
+
+                        <div class="tournament-icon">
+                            <i class="bi bi-stars"></i>
+                        </div>
+
+                        <h4 class="mt-3">
+                            FIFA Gaming League
+                        </h4>
+
+                        <p class="text-secondary">
+                            Show your football skills
+                            against other players.
+                        </p>
+
+                        <hr>
+
+                        <p>
+                            <i class="bi bi-calendar"></i>
+                            November 05, 2026
+                        </p>
+
+                        <p>
+                            <i class="bi bi-people"></i>
+                            64 Players
+                        </p>
+
+                        <p>
+                            <i class="bi bi-award"></i>
+                            Prize Pool: ₹40,000
+                        </p>
+
+                        <button class="btn btn-game w-100">
+                            Register Now
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= LEADERBOARD ================= -->
+
+    <section class="py-5" id="leaderboard">
+
+        <div class="container">
+
+            <div class="text-center">
+
+                <h2 class="section-title">
+                    Top Players
+                </h2>
+
+                <p class="section-subtitle">
+                    The best players in the GameVerse community.
+                </p>
+
+            </div>
+
+            <div class="leaderboard table-responsive">
+
+                <table class="table">
+
+                    <thead>
+
+                        <tr>
+                            <th>Rank</th>
+                            <th>Player</th>
+                            <th>Game</th>
+                            <th>Wins</th>
+                            <th>Points</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td class="rank">🥇</td>
+                            <td>ShadowX</td>
+                            <td>Valorant</td>
+                            <td>42</td>
+                            <td>9,800</td>
+                        </tr>
+
+                        <tr>
+                            <td class="rank">🥈</td>
+                            <td>NightWolf</td>
+                            <td>PUBG</td>
+                            <td>38</td>
+                            <td>9,200</td>
+                        </tr>
+
+                        <tr>
+                            <td class="rank">🥉</td>
+                            <td>Blaze</td>
+                            <td>FIFA</td>
+                            <td>35</td>
+                            <td>8,900</td>
+                        </tr>
+
+                        <tr>
+                            <td class="rank">4</td>
+                            <td>Phantom</td>
+                            <td>Valorant</td>
+                            <td>31</td>
+                            <td>8,500</td>
+                        </tr>
+
+                        <tr>
+                            <td class="rank">5</td>
+                            <td>CyberWolf</td>
+                            <td>Minecraft</td>
+                            <td>29</td>
+                            <td>8,100</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= PLAYER SECTION ================= -->
+
+    <section class="py-5 bg-dark" id="players">
+
+        <div class="container">
+
+            <div class="text-center">
+
+                <h2 class="section-title">
+                    Featured Players
+                </h2>
+
+                <p class="section-subtitle">
+                    Meet some of the rising stars in our community.
+                </p>
+
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-md-4">
+
+                    <div class="player-card text-center p-4">
+
+                        <img src="https://i.pravatar.cc/150?img=12"
+                            class="player-avatar"
+                            alt="Player">
+
+                        <h4 class="mt-3">
+                            ShadowX
+                        </h4>
+
+                        <p class="text-secondary">
+                            Valorant Pro Player
+                        </p>
+
+                        <div class="row">
+
+                            <div class="col">
+                                <strong>42</strong>
+                                <small class="d-block text-secondary">
+                                    Wins
+                                </small>
+                            </div>
+
+                            <div class="col">
+                                <strong>9800</strong>
+                                <small class="d-block text-secondary">
+                                    Points
+                                </small>
+                            </div>
+
+                            <div class="col">
+                                <strong>48</strong>
+                                <small class="d-block text-secondary">
+                                    Level
+                                </small>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="player-card text-center p-4">
+
+                        <img src="https://i.pravatar.cc/150?img=32"
+                            class="player-avatar"
+                            alt="Player">
+
+                        <h4 class="mt-3">
+                            NightWolf
+                        </h4>
+
+                        <p class="text-secondary">
+                            PUBG Champion
+                        </p>
+
+                        <div class="row">
+
+                            <div class="col">
+                                <strong>38</strong>
+                                <small class="d-block text-secondary">
+                                    Wins
+                                </small>
+                            </div>
+
+                            <div class="col">
+                                <strong>9200</strong>
+                                <small class="d-block text-secondary">
+                                    Points
+                                </small>
+                            </div>
+
+                            <div class="col">
+                                <strong>45</strong>
+                                <small class="d-block text-secondary">
+                                    Level
+                                </small>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="player-card text-center p-4">
+
+                        <img src="https://i.pravatar.cc/150?img=11"
+                            class="player-avatar"
+                            alt="Player">
+
+                        <h4 class="mt-3">
+                            Blaze
+                        </h4>
+
+                        <p class="text-secondary">
+                            FIFA Gaming Pro
+                        </p>
+
+                        <div class="row">
+
+                            <div class="col">
+                                <strong>35</strong>
+                                <small class="d-block text-secondary">
+                                    Wins
+                                </small>
+                            </div>
+
+                            <div class="col">
+                                <strong>8900</strong>
+                                <small class="d-block text-secondary">
+                                    Points
+                                </small>
+                            </div>
+
+                            <div class="col">
+                                <strong>43</strong>
+                                <small class="d-block text-secondary">
+                                    Level
+                                </small>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= NEWS SECTION ================= -->
+
+    <section class="py-5">
+
+        <div class="container">
+
+            <div class="text-center">
+
+                <h2 class="section-title">
+                    Latest Gaming News
+                </h2>
+
+                <p class="section-subtitle">
+                    Stay updated with the latest gaming trends and events.
+                </p>
+
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-md-4">
+
+                    <div class="card news-card h-100">
+
+                        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80"
+                            class="card-img-top"
+                            alt="Gaming news">
+
+                        <div class="card-body">
+
+                            <span class="badge bg-primary">
+                                Gaming
+                            </span>
+
+                            <h5 class="mt-3">
+                                The Future of Competitive Gaming
+                            </h5>
+
+                            <p class="text-secondary">
+                                Explore how esports and competitive
+                                gaming are changing the industry.
+                            </p>
+
+                            <a href="#" class="btn btn-outline-light">
+                                Read More
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="card news-card h-100">
+
+                        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=800&q=80"
+                            class="card-img-top"
+                            alt="Gaming news">
+
+                        <div class="card-body">
+
+                            <span class="badge bg-primary">
+                                Esports
+                            </span>
+
+                            <h5 class="mt-3">
+                                Biggest Esports Tournaments
+                            </h5>
+
+                            <p class="text-secondary">
+                                Discover some of the biggest gaming
+                                competitions around the world.
+                            </p>
+
+                            <a href="#" class="btn btn-outline-light">
+                                Read More
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="card news-card h-100">
+
+                        <img src="https://images.unsplash.com/photo-1598550476439-6847785fcea6?auto=format&fit=crop&w=800&q=80"
+                            class="card-img-top"
+                            alt="Gaming setup">
+
+                        <div class="card-body">
+
+                            <span class="badge bg-primary">
+                                Community
+                            </span>
+
+                            <h5 class="mt-3">
+                                Build Your Ultimate Gaming Setup
+                            </h5>
+
+                            <p class="text-secondary">
+                                Tips and ideas to create an amazing
+                                gaming environment.
+                            </p>
+
+                            <a href="#" class="btn btn-outline-light">
+                                Read More
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CONTACT SECTION ================= -->
+
+    <section class="contact-section py-5" id="contact">
+
+        <div class="container">
+
+            <div class="row align-items-center">
+
+                <div class="col-lg-6 mb-4">
+
+                    <h2 class="section-title">
+                        Join the GameVerse Community
+                    </h2>
+
+                    <p class="text-secondary">
+                        Have questions, suggestions or want to become
+                        part of our gaming community? Send us a message.
+                    </p>
+
+                    <p>
+                        <i class="bi bi-envelope"></i>
+                        support@gameverse.com
+                    </p>
+
+                    <p>
+                        <i class="bi bi-people"></i>
+                        Connect with thousands of gamers
+                    </p>
+
+                </div>
+
+
+                <div class="col-lg-6">
+
+                    <form>
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Your Name
+                            </label>
+
+                            <input type="text"
+                                class="form-control"
+                                placeholder="Enter your name">
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Email
+                            </label>
+
+                            <input type="email"
+                                class="form-control"
+                                placeholder="Enter your email">
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Message
+                            </label>
+
+                            <textarea class="form-control"
+                                rows="4"
+                                placeholder="Write your message"></textarea>
+
+                        </div>
+
+                        <button type="submit"
+                            class="btn btn-game">
+                            Send Message
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="py-4">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <h5 class="text-white">
+                        <i class="bi bi-controller"></i>
+                        GameVerse
+                    </h5>
+
+                    <p>
+                        Play. Compete. Connect.
+                    </p>
+
+                </div>
+
+
+                <div class="col-md-6 text-md-end">
+
+                    <a href="#" class="social-icon">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+
+                    <a href="#" class="social-icon">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+
+                    <a href="#" class="social-icon">
+                        <i class="bi bi-discord"></i>
+                    </a>
+
+                    <a href="#" class="social-icon">
+                        <i class="bi bi-youtube"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <hr>
+
+            <div class="text-center">
+
+                <small>
+                    © 2026 GameVerse. All Rights Reserved.
+                </small>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+</body>
+
+</html>
